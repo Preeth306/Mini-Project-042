@@ -1,0 +1,42 @@
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+        char name[50];
+        char p[10];
+        int total_mark,mark1,mark2,mark3,i,n,reg;
+        printf("Enter number of students: ");
+        scanf("%d",&n);
+        FILE *fptr;
+        fptr=(fopen("student.txt","w"));
+        if(fptr==NULL) {
+                printf("\nError!");
+                exit(1);
+        }
+        for (i=0;i<n;++i) {
+                printf("\nFor student%d\nEnter name: ",i+1);
+                scanf("%s",name);
+                printf("\nEnter reg no :");
+                scanf("%d",&reg);
+                printf("Enter English mark: ");
+                scanf("%d",&mark1);
+                printf("Enter Maths mark: ");
+                scanf("%d",&mark2);
+                printf("Enter Science mark: ");
+                scanf("%d",&mark3);
+                total_mark=mark1+mark2+mark3;
+                if(total_mark<40)
+                {
+                    fprintf(fptr,"\nstudent Details \nName: %s \nreg no:%d \nMark1=%d \nmark2=%d \nmark3=%d \ntotal_marks=%d \nresult: fail ",name,reg,mark1,mark2,mark3,total_mark);
+        
+                }
+                else
+                {
+                   fprintf(fptr,"\nstudent Details \nName: %s \nreg no:%d \nMark1=%d \nmark2=%d \nmark3=%d \ntotal_marks=%d \nresult: pass ",name,reg,mark1,mark2,mark3,total_mark);
+    
+                }
+                printf("%s",p);
+        }
+        fclose(fptr);
+        return 0;
+}
